@@ -1,0 +1,47 @@
+<div class="page-header text-center">
+    <h1>{{produto.nome}}</h1>
+</div>
+
+<p ng-show="mensagem.length" class="alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Produto</label>
+            <input name="nome" class="form-control" ng-model="produto.nome" required ng-maxlength="20">
+            <span ng-show="formulario.$submitted && formulario.nome.$error.required" class="form-control alert-danger">
+                Nome do produto obrigatório
+            </span>
+            <span ng-show="formulario.$submitted && formulario.nome.$error.maxlength" class="form-control alert-danger">
+                Deve ter no máximo 20 caracteres
+            </span>
+        </div>
+        <div class="form-group">
+            <label>URL</label>
+            <input name="url" class="form-control" ng-model="produto.url" required>
+            <span ng-show="formulario.$submitted && formulario.url.$error.required" class="form-control alert-danger">
+                Url obrigatório
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Valor</label>
+            <input name="preco" class="form-control" ng-model="produto.preco">            
+        </div>
+        
+        <div class="form-group">
+            <label>Estoque</label>
+            <input name="estoqu" class="form-control" ng-model="produto.estoque">            
+        </div>
+
+        <button type="submit " class="btn btn-primary " ng-disabled="formulario.$invalid ">
+            Salvar
+        </button>
+        <a href="/ " class="btn btn-primary " meu-focus>Voltar</a>
+        <hr>
+    </div>
+
+    <div class="col-md-6 ">
+        <meu-produto url="{{produto.url}}" nome="{{produto.nome}}"></meu-produto>
+    </div>
+
+</form>

@@ -1,0 +1,33 @@
+<div class="jumbotron">
+    <h1 class="text-center">Sofisticada</h1>
+</div>
+
+<a class="alert alert-info" ng-show="mensagem.length > 0">
+    {{mensagem}}   
+</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="#/produtos/new" class="btn btn-primary">Novo produto</a>    
+                </span>
+                <input class="form-control" ng-model="filtro" ng-model-options="{debounce: 1000}" placeholder="Filtrar">
+            </div>
+        </form>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <meu-painel class="col-md-3 painel-animado" nome="{{produto.nome}}" ng-repeat="produto in produtos |filter:filtro">
+
+        <meuproduto url="{{produto.url}}" nome="{{produto.nome}}" preco="{{produto.preco}}" estoque="{{produto.estoque}}"></meuproduto>
+
+        <a href="#/produtos/edit/{{produto._id}}" class="btn btn-success btn-block">Editar</a>
+        <p></p>
+        <meu-botao nome="Remover" acao="Remover(produto)"></meu-botao>
+
+    </meu-painel>
+</div>
